@@ -17,4 +17,4 @@ sys.path.append(be_comms_dir)
 from be_codec import CODEC
 
 if __name__ == "__main__":
-    CODEC.enable_adc()
+    CODEC.enable_input()
