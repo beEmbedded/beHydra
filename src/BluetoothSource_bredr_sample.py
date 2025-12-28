@@ -72,19 +72,19 @@ def terminateA2DPStream():
 # Each protocol can be individually configured to meeet the user requirements.
 if __name__ == "__main__":
     # Set the device in Source Mode. Only needs to be done once after power-on.
-    BREDR.set_sourceMode(1)
+    #BREDR.set_sourceMode(1)
     
     example_bd_address = '0x123456789123'                       # BD Address Example
     #found_bdaddress = BREDR.start_scan()                       # Scans for pairing devices nearby
     # Prints all the relevant information and prints the BD Address of the first device found
     #print("Info on found device:", found_bdaddress, "bd_addr:", found_bdaddress[0]['bd_addr'])   
-    BREDR.pair_device_by_bdaddress(example_bd_address)          # Requests beHydra to pair with a device with the given BD Address
+    #BREDR.pair_device_by_bdaddress(example_bd_address)          # Requests beHydra to pair with a device with the given BD Address
 
     # Start an HFP Call
-    initiateAndAcceptHfpCall()                                  # Starts an HFP call and accepts it (terminate any A2DP stream before starting HFP)
+    #initiateAndAcceptHfpCall()                                  # Starts an HFP call and accepts it (terminate any A2DP stream before starting HFP)
     #time.sleep(10)
     #terminateHFPCall()                                         # Stops the HFP Call and cleans up the audio routing
-    
+    CODEC.enable_input(1)
 
     # Start an A2DP Stream
     #startA2DPStream()                                          # Starts an A2DP stream (terminate any HFP call before starting A2DP)
