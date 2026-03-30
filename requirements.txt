@@ -1,1 +1,9 @@
-pyserial==3.5
+# External Dependencies
+serial==0.0.97
+matplotlib==3.8.4
+numpy==1.26.4
+scipy==1.17.1
+sounddevice==0.5.5
+
+# Install the beHydra project itself in editable mode
+-e .
