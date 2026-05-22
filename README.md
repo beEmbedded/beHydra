@@ -1,7 +1,9 @@
 # beHydra
 
 This is a Python package designed for interfacing with `beHydra` through a collection of pre-built APIs. This repository includes a set of utility classes for managing communication and data exchanges with hardware modules.
-Product Information can be found in: https://beembedded.com/beHydra/
+
+Product information: [beEmbedded – beHydra](https://beembedded.com/beHydra/)  
+Full API reference: [beHydra Control APIs](https://beembedded.gitbook.io/behydra/tools/automation-cli/behydra-control-apis)
 
 ## Table of Contents
 
@@ -15,7 +17,8 @@ Product Information can be found in: https://beembedded.com/beHydra/
 
 ### Prerequisites
 
-- Python 3.x (Recommended: 3.11)
+- Python **3.11** or later
+- `pip` (comes with Python)
 - A terminal or command prompt
 - Git (for cloning the repository)
 
@@ -29,31 +32,27 @@ cd beHydra
 
 ### Step 2: Create a Virtual Environment
 It's recommended to use a Python virtual environment for this project. The following commands will help you set up and activate the environment:
-Windows (using create_env.bat):
+**Windows:**
 1. Open a Command Prompt or PowerShell window.
-2. Run the setup script to create the virtual environment:
-```bash
-call create_env.bat
-```
+2. python -m venv venv
+3. venv\Scripts\activate
+4. pip install . --extra-index-url https://beEmbedded.github.io/beHydra/
 
-macOS/Linux (using create_env.sh):
+**macOS/Linux:**
 1. Open a terminal.
-2. Run the setup script:
+2. python3 -m venv venv
+3. source venv/bin/activate
+4. pip install . --extra-index-url https://beEmbedded.github.io/beHydra/
 
-```bash
-bash create_env.sh
-```
-
-The script create_env.bat or create_env.sh will install the required dependencies using the requirements.txt file.
 
 ### Setup and Usage
-After setting up the environment, you can use the pre-compiled Python classes. Refer to https://beembedded.gitbook.io/behydra/automation-cli/python-apis for all the available API's.
+After setting up the environment, you can use the pre-compiled Python classes. Refer to https://beembedded.gitbook.io/behydra/tools/automation-cli/behydra-control-apis for all the available APIs.
 
 Here's how you can use them in your own scripts:
 
 1. Import the API: In your custom Python scripts, you can import the classes like so:
 ```python
-from libs.beComms.be_pcm import PCM
+from beHydra.beComms.be_pcm import PCM
 ```
 
 2. Using the API: After importing, you can access and use the functionality provided by the PCM class:

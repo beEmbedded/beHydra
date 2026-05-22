@@ -5,9 +5,9 @@ from scipy.signal.windows import hann
 import matplotlib.pyplot as plt
 
 # Refer to https://beembedded.gitbook.io/behydra/automation-cli/python-apis for more details
-from libs.beComms.be_codec import CODEC
-from libs.beComms.be_usbAudio import USBAudio
-from libs.beAudioProc import beAudioProcessing
+from beHydra.beComms.be_codec import CODEC
+from beHydra.beComms.be_usbAudio import USBAudio
+from beHydra.beComms.beAudioProc import beAudioProcessing
 
 
 def setup_AnalogTestPath():

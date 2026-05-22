@@ -1,0 +1,61 @@
+# In the public 'beHydra' repo: .github/workflows/publish-wheels.yml
+name: Receive and Publish Wheels
+
+on:
+  repository_dispatch:
+    types: [publish-wheels]
+
+# Grant the necessary permissions for GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifact from private repo
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          github_token: ${{ secrets.BEHYDRA_PUBLIC_REPO_TOKEN }}
+          repo: ${{ github.event.client_payload.repo }}
+          run_id: ${{ github.event.client_payload.run_id }}
+          name: ${{ github.event.client_payload.artifact_name }}
+          path: ./dist/
+
+      - name: Generate Package Index
+        run: |
+          # Create project directory (normalized name)
+          mkdir -p behydra
+          
+          # Move all wheels into the project directory
+          mv dist/*.whl behydra/
+          
+          # Create the project page listing all wheels
+          echo '<!DOCTYPE html><html><head><title>beHydra</title></head><body><h1>beHydra Wheels</h1>' > behydra/index.html
+          for wheel in behydra/*.whl; do
+            filename=$(basename "$wheel")
+            echo "<a href=\"$filename\">$filename</a><br>" >> behydra/index.html
+          done
+          echo '</body></html>' >> behydra/index.html
+          
+          # Create the root index page listing the project
+          echo '<!DOCTYPE html><html><head><title>Simple Index</title></head><body>' > index.html
+          echo '<a href="behydra/">behydra</a><br>' >> index.html
+          echo '</body></html>' >> index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

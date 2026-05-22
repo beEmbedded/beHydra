@@ -3,18 +3,28 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "beHydra"
+name = "beHydra_Installer"
 version = "0.1.0"
 description = "Internal libraries for beHydra testing and comms"
 requires-python = ">=3.11"
+authors = [
+    {name = "beEmbedded Ltd", email = "info@beembedded.com"}
+]
 dependencies = [
-                "pyserial==3.5",
-                "matplotlib==3.8.4",
-                "numpy==1.26.4",
-                "scipy==1.17.1",
-                "sounddevice==0.5.5"
-                ] # Python dependencies
+    "pyserial==3.5",
+    "matplotlib==3.8.4",
+    "numpy==1.26.4",
+    "scipy==1.17.1",
+    "sounddevice==0.5.5",
+    "beHydra==0.1.0",
+]
+
+[project.urls]
+Homepage = "https://beembedded.com/behydra/"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["libs*", "src*"]
+include = ["beHydra*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.so", "*.pyd", "*.dylib", "*.dll"]
