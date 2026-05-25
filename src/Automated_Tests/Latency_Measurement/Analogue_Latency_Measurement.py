@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Refer to https://beembedded.gitbook.io/behydra/automation-cli/python-apis for more details
 from beHydra.beComms.be_codec import CODEC
 from beHydra.beComms.be_usbAudio import USBAudio
-from beHydra.beComms.beAudioProc import beAudioProcessing
+from beHydra.beAudioProc import beAudioProcessing
 
 
 def setup_AnalogTestPath():
