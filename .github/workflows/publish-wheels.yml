@@ -21,7 +21,7 @@ jobs:
       - name: Download artifact from private repo
         uses: dawidd6/action-download-artifact@v3
         with:
-          github_token: ${{ secrets.BEHYDRA_PUBLIC_REPO_TOKEN }}
+          github_token: ${{ secrets.BEHYDRA_PRIVATEREPO_TOKEN }}
           repo: ${{ github.event.client_payload.repo }}
           run_id: ${{ github.event.client_payload.run_id }}
           name: ${{ github.event.client_payload.artifact_name }}
