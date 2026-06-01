@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "beHydra_Installer"
-version = "0.1.0"
+version = "0.1.1"
 description = "Internal libraries for beHydra testing and comms"
 requires-python = ">=3.11"
 authors = [
@@ -16,7 +16,7 @@ dependencies = [
     "numpy==1.26.4",
     "scipy==1.17.1",
     "sounddevice==0.5.5",
-    "beHydra==0.1.0",
+    "beHydra==0.1.1",
 ]
 
 [project.urls]
